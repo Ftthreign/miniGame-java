@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Player {
     String name;
-    float health;
+    public float health;
     float def;
     Weapon weapon;
     Armor armor;
@@ -29,6 +29,8 @@ public class Player {
         System.out.println("Player's Name : " + this.name);
         System.out.println("Health : " + this.health);
         System.out.println("Def : " + this.def);
+        armor.showDetails();
+        weapon.showDetails();
     }
 
     public void attack(Player opponent) {
@@ -42,7 +44,7 @@ public class Player {
 
         opponent.health -= damage;
 
-        System.out.println(name + " Attacking " + opponent.name + "With " + damage + "ATK");
+        System.out.println(name + " Attacking " + opponent.name + " With " + damage + "ATK");
         System.out.println(opponent.name + "'s health : " + opponent.health);
     }
 

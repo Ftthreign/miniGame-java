@@ -14,7 +14,7 @@ public  class Main {
         Scanner input = new Scanner(System.in);
 //        Random rand = new Random();
 
-        System.out.println("Input your Player's name : ");
+        System.out.print("Input your Player's name : ");
         String player1 = input.next();
 
         Player playerOne = new Player(player1, 100, 25);
@@ -26,7 +26,7 @@ public  class Main {
         botPlayer.equipArmor(new Armor("Steel Armor", 25));
         botPlayer.equipWeap(new Weapon("Scimitar", 18));
 
-        System.out.println("Want to continue to play? ");
+        System.out.print("Want to continue to play? ");
         String confirm = input.next();
 
         while(confirm.equalsIgnoreCase("y")) {
@@ -34,6 +34,7 @@ public  class Main {
             System.out.println("1. Attack");
             System.out.println("2. Defence");
             System.out.println("3. Healing");
+            System.out.println("4. See Player's details");
 
             int choice = input.nextInt();
 
@@ -65,6 +66,14 @@ public  class Main {
                     }
                 }
                 case NOT_VALID -> System.out.println("Choice is not valid");
+            }
+
+            if(playerOne.health <= 0) {
+                System.out.println(player1 + " Lose!");
+                break;
+            } else if (botPlayer.health <= 0) {
+                System.out.println(player1 + " Win!");
+                break;
             }
 
             System.out.println("Want to continue ? ");
