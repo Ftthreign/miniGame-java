@@ -34,37 +34,37 @@ public class Player {
     }
 
     public void attack(Player opponent) {
-        if (weapon == null) {
+        if (this.weapon == null) {
             System.out.println(this.name + " can't attack because isn't equip any weapon");
             return;
         }
 
-        if(health != 0) {
+        if(this.health != 0) {
             int damage = rand.nextInt(weapon.weaponDamage + 1);
             opponent.health -= damage;
 
-            System.out.println(name + " Attacking " + opponent.name + " With " + damage + "ATK");
+            System.out.println(this.name + " Attacking " + opponent.name + " With " + damage + "ATK");
             System.out.println(opponent.name + "'s health : " + opponent.health);
         }
 
     }
 
     public void defend() {
-        if (armor != null) {
+        if (this.armor != null) {
             int addDef = armor.use();
             def += addDef;
-            System.out.println(name + " chooses to defend and gains additional defense");
+            System.out.println(this.name + " chooses to defend and gains additional defense");
         }
-        System.out.println(name + "'s health : " + health);
+        System.out.println(this.name + "'s health : " + this.health);
     }
 
     public void healing() {
 
         int healthVal = rand.nextInt(20) + 1;
-        health += healthVal;
+        this.health += healthVal;
 
-        System.out.println(name + " Healing...");
-        System.out.println(name + " Gains health : " + healthVal);
-        System.out.println(name + "'s health : " + health);
+        System.out.println(this.name + " Healing...");
+        System.out.println(this.name + " Gains health : " + healthVal);
+        System.out.println(this.name + "'s health : " + health);
     }
 }
