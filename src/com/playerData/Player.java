@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Player {
     private final String  name;
-    public float health;
+    private float health;
     private float def;
-    public Weapon weapon;
-    public Armor armor;
+    private Weapon weapon;
+    private Armor armor;
 
-    static Random rand = new Random();
+    private final static Random rand = new Random();
 
     public Player(String name, float health, float def) {
         this.name = name;
@@ -17,11 +17,17 @@ public class Player {
         this.def = def;
     }
 
-    public void equipWeap(Weapon weapon) {
+    // Getter
+    public float getHealth() {
+        return this.health;
+    }
+
+    // Getter
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
-    public void equipArmor(Armor armor) {
+    public void setArmor(Armor armor) {
         this.armor = armor;
     }
 

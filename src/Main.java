@@ -8,7 +8,11 @@ import java.util.Scanner;
 public  class Main {
     public static void main(String[] args) {
         enum Action {
-            ATTACK, DEFEND, HEAL, GET_DETAILS, NOT_VALID
+            ATTACK,
+            DEFEND,
+            HEAL,
+            GET_DETAILS,
+            NOT_VALID,
         }
 
         Scanner input = new Scanner(System.in);
@@ -20,11 +24,11 @@ public  class Main {
         Player playerOne = new Player(player1, 100, 25);
         Player botPlayer = new Player("com", 100, 25);
 
-        playerOne.equipArmor(new Armor("Leather Jacket", 15));
-        playerOne.equipWeap(new Weapon("Steel Sword", 20));
+        playerOne.setArmor(new Armor("Leather Jacket", 15));
+        playerOne.setWeapon(new Weapon("Steel Sword", 20));
 
-        botPlayer.equipArmor(new Armor("Steel Armor", 25));
-        botPlayer.equipWeap(new Weapon("Scimitar", 18));
+        botPlayer.setArmor(new Armor("Steel Armor", 25));
+        botPlayer.setWeapon(new Weapon("Scimitar", 18));
 
         System.out.print("Want to continue to play? ");
         String confirm = input.next();
@@ -68,15 +72,15 @@ public  class Main {
                 case NOT_VALID -> System.out.println("Choice is not valid");
             }
 
-            if(playerOne.health <= 0) {
+            if(playerOne.getHealth() <= 0) {
                 System.out.println(player1 + " Lose!");
                 break;
-            } else if (botPlayer.health <= 0) {
+            } else if (botPlayer.getHealth() <= 0) {
                 System.out.println(player1 + " Win!");
                 break;
             }
 
-            System.out.println("Want to continue ? ");
+            System.out.print("Want to continue ? ");
             confirm = input.next();
         }
 
