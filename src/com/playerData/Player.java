@@ -3,11 +3,11 @@ package com.playerData;
 import java.util.Random;
 
 public class Player {
-    String name;
+    private final String  name;
     public float health;
-    float def;
-    Weapon weapon;
-    Armor armor;
+    private float def;
+    public Weapon weapon;
+    public Armor armor;
 
     static Random rand = new Random();
 
@@ -39,13 +39,14 @@ public class Player {
             return;
         }
 
+        if(health != 0) {
+            int damage = rand.nextInt(weapon.weaponDamage + 1);
+            opponent.health -= damage;
 
-        int damage = rand.nextInt(weapon.weaponDamage + 1);
+            System.out.println(name + " Attacking " + opponent.name + " With " + damage + "ATK");
+            System.out.println(opponent.name + "'s health : " + opponent.health);
+        }
 
-        opponent.health -= damage;
-
-        System.out.println(name + " Attacking " + opponent.name + " With " + damage + "ATK");
-        System.out.println(opponent.name + "'s health : " + opponent.health);
     }
 
     public void defend() {
