@@ -5,6 +5,11 @@ import java.util.Random;
 public class Weapon extends Item {
     int weaponDamage;
 
+    /**
+     *
+     * @param itemName - this is implementation of abstraction class Item and can be use public
+     * @param weaponDamage - this is value of weapon damage
+     */
     public Weapon(String itemName, int weaponDamage) {
         super(itemName);
         this.weaponDamage = weaponDamage;

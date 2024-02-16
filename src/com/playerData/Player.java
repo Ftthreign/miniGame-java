@@ -11,6 +11,12 @@ public class Player {
 
     private final static Random rand = new Random();
 
+    /**
+     *
+     * @param name - for name of Hero
+     * @param health - for health of Hero
+     * @param def - for defence of Hero
+     */
     public Player(String name, float health, float def) {
         this.name = name;
         this.health = health;
