@@ -3,6 +3,7 @@ import com.playerData.Player;
 import com.playerData.Weapon;
 
 //import java.util.Random;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public  class Main {
@@ -30,16 +31,11 @@ public  class Main {
         botPlayer.setArmor(new Armor("Steel Armor", 25));
         botPlayer.setWeapon(new Weapon("Scimitar", 18));
 
-        System.out.print("Want to continue to play? ");
+        System.out.print("Want to start play? ");
         String confirm = input.next();
 
         while(confirm.equalsIgnoreCase("y")) {
-            System.out.println("Choose the action : ");
-            System.out.println("1. Attack");
-            System.out.println("2. Defence");
-            System.out.println("3. Healing");
-            System.out.println("4. See Player's details");
-
+            Player.displayChoice();
             int choice = input.nextInt();
 
             Action action = switch (choice) {
@@ -49,27 +45,33 @@ public  class Main {
                 case 4 -> Action.GET_DETAILS;
                 default -> Action.NOT_VALID;
             };
-
-            switch (action) {
-                case ATTACK -> {
-                    playerOne.attack(botPlayer);
-                    botPlayer.attack(playerOne);
-                }
-                case DEFEND -> {
-                    playerOne.defend();
-                    botPlayer.defend();
-                }
-                case HEAL -> playerOne.healing();
-                case GET_DETAILS -> {
-                    System.out.println("1. Players stat");
-                    System.out.println("2. Bot stat");
-                    int detailsChoice = input.nextInt();
-                    switch (detailsChoice) {
-                        case 1 -> playerOne.showDetails();
-                        case 2 -> botPlayer.showDetails();
+            try {
+                switch (action) {
+                    case ATTACK -> {
+                        playerOne.attack(botPlayer);
+                        botPlayer.attack(playerOne);
                     }
+                    case DEFEND -> {
+                        playerOne.defend();
+                        botPlayer.defend();
+                    }
+                    case HEAL -> {
+                        playerOne.healing();
+                        botPlayer.healing();
+                    }
+                    case GET_DETAILS -> {
+                        System.out.println("1. Players stat");
+                        System.out.println("2. Bot stat");
+                        int detailsChoice = input.nextInt();
+                        switch (detailsChoice) {
+                            case 1 -> playerOne.showDetails();
+                            case 2 -> botPlayer.showDetails();
+                        }
+                    }
+                    case NOT_VALID -> System.out.println("Choice is not valid");
                 }
-                case NOT_VALID -> System.out.println("Choice is not valid");
+            } catch (InputMismatchException e) {
+                System.out.println("Input must be integer.");
             }
 
             if(playerOne.getHealth() <= 0) {
@@ -83,6 +85,5 @@ public  class Main {
             System.out.print("Want to continue ? ");
             confirm = input.next();
         }
-
     }
 }

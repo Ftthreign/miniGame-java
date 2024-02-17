@@ -37,6 +37,15 @@ public class Player {
         this.armor = armor;
     }
 
+    public void defend() {
+        if (this.armor != null) {
+            int addDef = armor.use();
+            def += addDef + (float) 0.5 * this.health;
+            System.out.println(this.name + " chooses to defend and gains additional defense");
+        }
+        System.out.println(this.name + "'s health : " + def);
+    }
+
     public void showDetails() {
         System.out.println("Player's Name : " + this.name);
         System.out.println("Health : " + this.health);
@@ -61,13 +70,12 @@ public class Player {
 
     }
 
-    public void defend() {
-        if (this.armor != null) {
-            int addDef = armor.use();
-            def += addDef;
-            System.out.println(this.name + " chooses to defend and gains additional defense");
-        }
-        System.out.println(this.name + "'s health : " + this.health);
+    static public void displayChoice() {
+        System.out.println("Choose the action : ");
+        System.out.println("1. Attack");
+        System.out.println("2. Defence");
+        System.out.println("3. Healing");
+        System.out.println("4. See Player's details");
     }
 
     public void healing() {
