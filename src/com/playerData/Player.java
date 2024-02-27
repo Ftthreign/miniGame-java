@@ -1,8 +1,9 @@
 package com.playerData;
 
+import com.playerData.playerAction.IplayerAction;
 import java.util.Random;
 
-public class Player {
+public class Player implements IplayerAction {
     private final String  name;
     private float health;
     private float def;
@@ -28,13 +29,17 @@ public class Player {
         return this.health;
     }
 
-    // Getter
+    // Setter
     public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+        if (weapon != null) {
+            this.weapon = weapon;
+        }
     }
 
     public void setArmor(Armor armor) {
-        this.armor = armor;
+        if (armor != null) {
+            this.armor = armor;
+        }
     }
 
     public void defend() {
